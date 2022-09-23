@@ -37,11 +37,7 @@ public class Money implements Comparable {
 	 *  @return String con informaci�n de la moneda.
 	 */
 	public String toString() {
-		double a= cantidad/100;
 		
-		String amount = Double.toString(a);
-		
-		return amount + " " + divisa.getName();
 	}
 	
 	/**
@@ -49,7 +45,7 @@ public class Money implements Comparable {
 	 * @return Valor universal de la cantidad
 	 */
 	public int valorUniversal() {
-		return divisa.valorUniversal(this.cantidad);
+		
 	}
 	
 	/**
@@ -58,7 +54,7 @@ public class Money implements Comparable {
 	 * @return Boolean indicando equivalencia
 	 */
 	public Boolean equals(Money otra) {
-		return otra.valorUniversal()==valorUniversal();
+		
 	}
 	
 	/**
@@ -93,13 +89,8 @@ public class Money implements Comparable {
 	 * Un entero negativo si el objeto actual tiene menos valor que el recibido
 	 * Un entero positivo si el objeto actual tiene m�s valor que el recibido
 	 */
-
-	@Override
-	public int compareTo(Object o) {
-		if(o==this) return 0;
-		if(o==null) return valorUniversal();
-		
-		return valorUniversal()- ((Money) o).valorUniversal();
+	public int compareTo(Object otra) {
+			
 		
 	}
 }

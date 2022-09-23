@@ -93,13 +93,7 @@ public class Money implements Comparable {
 	 * Un entero negativo si el objeto actual tiene menos valor que el recibido
 	 * Un entero positivo si el objeto actual tiene m�s valor que el recibido
 	 */
-
-	@Override
-	public int compareTo(Object o) {
-		if(o==this) return 0;
-		if(o==null) return valorUniversal();
-		
-		return valorUniversal()- ((Money) o).valorUniversal();
-		
+	public int compareTo(Money otra) {
+		return valorUniversal()-otra.valorUniversal();
 	}
 }

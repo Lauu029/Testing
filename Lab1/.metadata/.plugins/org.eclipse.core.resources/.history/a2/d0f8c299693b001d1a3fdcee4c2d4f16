@@ -55,6 +55,6 @@ public class Divisa {
 	*/
 	public int valorEnEstaDivisa(int cantidad, Divisa otraDivisa) {
 		
-		return (int) (otraDivisa.valorUniversal(cantidad) / this.rate);
+		return (int) (otraDivisa.valorUniversal(cantidad) * this.rate);
 	}
 }
