@@ -68,9 +68,9 @@ public class DivisaTestTemplate {
 		String msg = "Wrong global value";
 		
 		//assertThat(cant * SEK.getRate(), closeTo(SEK.valorUniversal(cant), 0.0005));
-		assertEquals(msg, cant * SEK.getRate(), SEK.valorUniversal(cant), 0.0005);
-		assertEquals(msg, cant * DKK.getRate(), DKK.valorUniversal(cant), 0.0005);
-		assertEquals(msg, cant * EUR.getRate(), EUR.valorUniversal(cant), 0.0005);
+		assertEquals(msg, (int) (cant * 0.15), SEK.valorUniversal(cant));
+		assertEquals(msg, (int) (cant * 0.20), DKK.valorUniversal(cant));
+		assertEquals(msg, (int) (cant * 1.5), EUR.valorUniversal(cant));
 	}
 	
 	@Test
