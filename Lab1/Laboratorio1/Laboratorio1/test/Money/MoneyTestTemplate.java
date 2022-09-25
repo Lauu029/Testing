@@ -89,12 +89,12 @@ public class MoneyTestTemplate {
 	@Test
 	public void testAdd() {
 		String msg="The Addiction is wrong";
-		assertEquals(msg, 3000, SEK100.sub(EUR10));
-		assertEquals(msg, 4500, SEK200.sub(SEK100));
-		assertEquals(msg, 4500, EUR10.sub(SEK200));
-		assertEquals(msg, 3000, EUR20.sub(SEK0));
-		assertEquals(msg, 0, EUR0.sub(SEK0));
-		assertEquals(msg, -1500, EUR0.sub(SEKn100));
+		assertEquals(msg, 3000, SEK100.add(EUR10));
+		assertEquals(msg, 4500, SEK200.add(SEK100));
+		assertEquals(msg, 4500, EUR10.add(SEK200));
+		assertEquals(msg, 3000, EUR20.add(SEK0));
+		assertEquals(msg, 0, EUR0.add(SEK0));
+		assertEquals(msg, -1500, EUR0.add(SEKn100));
 	}
 
 	@Test
