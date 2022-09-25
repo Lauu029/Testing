@@ -65,16 +65,32 @@ public class MoneyTestTemplate {
 
 	@Test
 	public void testIsZero() {
-		fail("No implementado");
+		String msg="Should be a different result";
+		assertEquals(msg, false, SEK100.isZero());
+		assertEquals(msg,false, EUR10.isZero());
+		assertEquals(msg,false, SEK200.isZero());
+		assertEquals(msg, false, EUR20.isZero());
+		assertEquals(msg,true, SEK0.isZero());
+		assertEquals(msg,true, EUR0.isZero());
+		assertEquals(msg,false, SEKn100.isZero());
 	}
 
 	@Test
 	public void testNegate() {
-		fail("No implementado");
+		String msg="Should be a different result";
+		
+		assertEquals(msg, -10000, SEK100.negate());
+		assertEquals(msg,-1000, EUR10.negate());
+		assertEquals(msg,-20000, SEK200.negate());
+		assertEquals(msg, -2000, EUR20.negate());
+		assertEquals(msg,0, SEK0.negate());
+		assertEquals(msg,0, EUR0.negate());
+		assertEquals(msg,10000, SEKn100.negate());
 	}
 
 	@Test
 	public void testCompareTo() {
+		
 		fail("No implementado");		
 	}
 }
