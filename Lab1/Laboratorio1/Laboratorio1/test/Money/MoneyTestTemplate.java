@@ -90,32 +90,42 @@ public class MoneyTestTemplate {
 
 	@Test
 	public void testIsZero() {
-		String msg="Should be a different result";
-		assertEquals(msg, false, SEK100.isZero());
-		assertEquals(msg,false, EUR10.isZero());
-		assertEquals(msg,false, SEK200.isZero());
-		assertEquals(msg, false, EUR20.isZero());
-		assertEquals(msg,true, SEK0.isZero());
-		assertEquals(msg,true, EUR0.isZero());
-		assertEquals(msg,false, SEKn100.isZero());
+		String msg="Should be equal to zero";
+		assertFalse(msg,  SEK100.isZero());
+		assertFalse(msg, EUR10.isZero());
+		assertFalse(msg, SEK200.isZero());
+		assertFalse(msg,  EUR20.isZero());
+		assertTrue(msg, SEK0.isZero());
+		assertTrue(msg, EUR0.isZero());
+		assertFalse(msg, SEKn100.isZero());
 	}
 
 	@Test
 	public void testNegate() {
-		String msg="Should be a different result";
+		String msgN="Should be Negative";
+		String msgP="Should be Positive";
+		String msgC="Should be Zero";
 		
-		assertEquals(msg, -10000, SEK100.negate());
-		assertEquals(msg,-1000, EUR10.negate());
-		assertEquals(msg,-20000, SEK200.negate());
-		assertEquals(msg, -2000, EUR20.negate());
-		assertEquals(msg,0, SEK0.negate());
-		assertEquals(msg,0, EUR0.negate());
-		assertEquals(msg,10000, SEKn100.negate());
+		assertEquals(msgN, -10000, SEK100.negate());
+		assertEquals(msgN,-1000, EUR10.negate());
+		assertEquals(msgN,-20000, SEK200.negate());
+		assertEquals(msgN, -2000, EUR20.negate());
+		assertEquals(msgC,0, SEK0.negate());
+		assertEquals(msgC,0, EUR0.negate());
+		assertEquals(msgP,10000, SEKn100.negate());
 	}
 
 	@Test
 	public void testCompareTo() {
+		String msgEq="Monedas should be equal";
+		String msgLess="Monedas should be less";
+		String msgGreat="Monedas should be greater";
 		
-		fail("No implementado");		
+		assertTrue(msgLess, SEK100.compareTo(EUR10)<0);
+		assertTrue(msgEq, EUR20.compareTo(SEK200)==0);
+		assertTrue(msgEq, EUR0.compareTo(SEK0)==0);
+		assertTrue(msgLess, EUR10.compareTo(SEK200)<0);	
+		assertTrue(msgLess, SEKn100.compareTo(SEK100)<0);
+		assertTrue(msgGreat, EUR10.compareTo(SEK100)>0);
 	}
 }
