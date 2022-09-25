@@ -30,17 +30,42 @@ public class MoneyTestTemplate {
 
 	@Test
 	public void testGetCantidad() {
-		fail("No implementado");
+		String msg = "Should be same money";
+		assertEquals(msg,SEK100, SEK100.getCantidad());
+		assertEquals(msg,EUR10, EUR10.getCantidad());
+		assertEquals(msg,SEK200, SEK200.getCantidad());
+		assertEquals(msg,EUR20, EUR20.getCantidad());
+		assertEquals(msg,SEK0, SEK0.getCantidad());
+		assertEquals(msg,EUR0, EUR0.getCantidad());
+		assertEquals(msg,SEKn100, SEKn100.getCantidad());
 	}
 
 	@Test
 	public void testGetDivisa() {
-		fail("No implementado");
+		String msgSEK = "Should be SEK";
+		String msgEUR = "Should be EUR";
+
+		assertEquals(msgSEK,SEK, SEK100.getDivisa());
+		assertEquals(msgEUR,EUR, EUR10.getDivisa());
+		assertEquals(msgSEK,SEK, SEK200.getDivisa());
+		assertEquals(msgEUR,EUR, EUR20.getDivisa());
+		assertEquals(msgSEK,SEK, SEK0.getDivisa());
+		assertEquals(msgEUR,EUR, EUR0.getDivisa());
+		assertEquals(msgSEK,SEK, SEKn100.getDivisa());
 	}
 
 	@Test
 	public void testToString() {
-		fail("No implementado");
+		String msgSEK = "Should be N SEK";
+		String msgEUR = "Should be N EUR";
+		
+		assertEquals(msgSEK,"100 SEK", SEK100.toString());
+		assertEquals(msgEUR,"10 EUR", EUR10.toString());
+		assertEquals(msgSEK,"200 SEK", SEK200.toString());
+		assertEquals(msgEUR,"20 EUR", EUR20.toString());
+		assertEquals(msgSEK,"0 SEK", SEK0.toString());
+		assertEquals(msgEUR,"0 EUR", EUR0.toString());
+		assertEquals(msgSEK,"100 SEK", SEKn100.toString());
 	}
 
 	@Test
