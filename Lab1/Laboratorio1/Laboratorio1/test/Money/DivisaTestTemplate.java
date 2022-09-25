@@ -44,12 +44,24 @@ public class DivisaTestTemplate {
 		DKK.setRate(newrate);
 		EUR.setRate(newrate);
 		
-		assertEquals();
+		assertEquals(msg, newrate, SEK.getRate());
+		assertEquals(msg, newrate, DKK.getRate());
+		assertEquals(msg, newrate, EUR.getRate());
+		
+		msg = "Should be the old rate";
+		SEK.setRate(oldrates[0]);
+		DKK.setRate(oldrates[1]);
+		EUR.setRate(oldrates[2]);
+		
+		assertEquals(msg, oldrates[0], SEK.getRate());
+		assertEquals(msg, oldrates[1], DKK.getRate());
+		assertEquals(msg, oldrates[2], EUR.getRate());
+		
 	}
 	
 	@Test
 	public void testGlobalValue() {
-		
+		SEK.valorUniversal(0);
 	}
 	
 	@Test
