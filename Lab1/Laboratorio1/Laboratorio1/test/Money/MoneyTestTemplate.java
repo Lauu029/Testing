@@ -94,12 +94,24 @@ public class MoneyTestTemplate {
 
 	@Test
 	public void testAdd() {
-		fail("No implementado");
+		String msg="The Addiction is wrong";
+		assertEquals(msg, 3000, SEK100.sub(EUR10));
+		assertEquals(msg, 4500, SEK200.sub(SEK100));
+		assertEquals(msg, 4500, EUR10.sub(SEK200));
+		assertEquals(msg, 3000, EUR20.sub(SEK0));
+		assertEquals(msg, 0, EUR0.sub(SEK0));
+		assertEquals(msg, -1500, EUR0.sub(SEKn100));
 	}
 
 	@Test
 	public void testSub() {
-		fail("No implementado");
+		String msg="The Substaction is wrong";
+		assertEquals(msg, 0, SEK100.sub(EUR10));
+		assertEquals(msg, 1500, SEK200.sub(SEK100));
+		assertEquals(msg, -1500, EUR10.sub(SEK200));
+		assertEquals(msg, 3000, EUR20.sub(SEK0));
+		assertEquals(msg, 0, EUR0.sub(SEK0));
+		assertEquals(msg, 1500, EUR0.sub(SEKn100));
 	}
 
 	@Test
@@ -135,7 +147,7 @@ public class MoneyTestTemplate {
 		String msgLess="Monedas should be less";
 		String msgGreat="Monedas should be greater";
 		
-		assertTrue(msgLess, SEK100.compareTo(EUR10)<0);
+		assertTrue(msgEq, SEK100.compareTo(EUR10)==0);
 		assertTrue(msgEq, EUR20.compareTo(SEK200)==0);
 		assertTrue(msgEq, EUR0.compareTo(SEK0)==0);
 		assertTrue(msgLess, EUR10.compareTo(SEK200)<0);	

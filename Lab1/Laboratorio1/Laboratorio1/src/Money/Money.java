@@ -70,6 +70,9 @@ public class Money implements Comparable {
 		return (new Money(this.cantidad + divisa.valorEnEstaDivisa (otra.cantidad, otra.divisa),this.divisa));
 	}
 
+	public Money sub(Money otra) {
+		return (new Money(this.cantidad - divisa.valorEnEstaDivisa (otra.cantidad, otra.divisa),this.divisa));
+	}
 		
 	/**
 	 * 
