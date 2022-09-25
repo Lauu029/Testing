@@ -5,9 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import Money.Divisa;
-import Money.Money;
-
 public class MoneyTestTemplate {
 	Divisa SEK, DKK, NOK, EUR;
 	Money SEK100, EUR10, SEK200, EUR20, SEK0, EUR0, SEKn100;
@@ -83,7 +80,16 @@ public class MoneyTestTemplate {
 
 	@Test
 	public void testEqualsMoney() {
-		fail("No implementado");
+		String msgF = "Should not have equal money";
+		String msgT = "Should have equal money";
+		
+		assertEquals(msgF, SEK100.equals(SEK200));
+		assertEquals(msgF, SEK200.equals(SEK100));
+		assertEquals(msgF, EUR10.equals(EUR20));
+		assertEquals(msgF, SEKn100.equals(SEK100));
+		
+		assertEquals(msgT, EUR0.equals(SEK0));
+		assertEquals(msgT, SEK100.equals(SEK100));
 	}
 
 	@Test
