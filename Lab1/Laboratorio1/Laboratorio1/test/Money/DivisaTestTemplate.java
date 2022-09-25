@@ -19,22 +19,37 @@ public class DivisaTestTemplate {
 
 	@Test
 	public void testGetName() {
-		fail("No implementado");
+		String msg = "Should be same name";
+		assertEquals(msg,"SEK", SEK.getName());
+		assertEquals(msg,"DKK", DKK.getName());
+		assertEquals(msg,"EUR", EUR.getName());
+
 	}
 	
 	@Test
 	public void testGetRate() {
-		fail("No implementado");
+		String msg = "Should be same rate";
+		assertEquals(msg, (Double)0.15, SEK.getRate());
+		assertEquals(msg, (Double)0.20, DKK.getRate());
+		assertEquals(msg, (Double)1.5, EUR.getRate());
 	}
 	
 	@Test
 	public void testSetRate() {
-		fail("No implementado");
+		Double newrate = 0.5;
+		Double[] oldrates = {SEK.getRate(), DKK.getRate(), EUR.getRate()};
+		
+		String msg = "Should be the new rate";
+		SEK.setRate(newrate);
+		DKK.setRate(newrate);
+		EUR.setRate(newrate);
+		
+		assertEquals();
 	}
 	
 	@Test
 	public void testGlobalValue() {
-		fail("No implementado");
+
 	}
 	
 	@Test
