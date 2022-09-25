@@ -30,20 +30,20 @@ public class MoneyTestTemplate {
 
 	@Test
 	public void testGetCantidad() {
-		String msg = "Should be same money";
-		assertEquals(msg,SEK100, SEK100.getCantidad());
-		assertEquals(msg,EUR10, EUR10.getCantidad());
-		assertEquals(msg,SEK200, SEK200.getCantidad());
-		assertEquals(msg,EUR20, EUR20.getCantidad());
-		assertEquals(msg,SEK0, SEK0.getCantidad());
-		assertEquals(msg,EUR0, EUR0.getCantidad());
-		assertEquals(msg,SEKn100, SEKn100.getCantidad());
+		String msg = "Should be same cantidad";
+		assertEquals(msg,10000, SEK100.getCantidad());
+		assertEquals(msg,1000, EUR10.getCantidad());
+		assertEquals(msg,20000, SEK200.getCantidad());
+		assertEquals(msg,2000, EUR20.getCantidad());
+		assertEquals(msg,0, SEK0.getCantidad());
+		assertEquals(msg,0, EUR0.getCantidad());
+		assertEquals(msg,-10000, SEKn100.getCantidad());
 	}
 
 	@Test
 	public void testGetDivisa() {
-		String msgSEK = "Should be SEK";
-		String msgEUR = "Should be EUR";
+		String msgSEK = "Should be SEK divisa";
+		String msgEUR = "Should be EUR divisa";
 
 		assertEquals(msgSEK,SEK, SEK100.getDivisa());
 		assertEquals(msgEUR,EUR, EUR10.getDivisa());
@@ -56,8 +56,8 @@ public class MoneyTestTemplate {
 
 	@Test
 	public void testToString() {
-		String msgSEK = "Should be N SEK";
-		String msgEUR = "Should be N EUR";
+		String msgSEK = "Should be N SEK in string";
+		String msgEUR = "Should be N EUR in string";
 		
 		assertEquals(msgSEK,"100 SEK", SEK100.toString());
 		assertEquals(msgEUR,"10 EUR", EUR10.toString());
@@ -70,7 +70,15 @@ public class MoneyTestTemplate {
 
 	@Test
 	public void testGlobalValue() {
-		fail("No implementado");
+		String msg = "Should be equal global value";
+		
+		assertEquals(msg, (Double) (10000 * 0.15), SEK100.valorUniversal(), 0.0005);
+		assertEquals(msg,(Double) (1000 * 1.5), EUR10.valorUniversal(), 0.0005);
+		assertEquals(msg,(Double) (20000* 0.15), SEK200.valorUniversal(), 0.0005);
+		assertEquals(msg,(Double) (2000 * 1.5), EUR20.valorUniversal(), 0.0005);
+		assertEquals(msg,0, SEK0.valorUniversal());
+		assertEquals(msg,0, EUR0.valorUniversal());
+		assertEquals(msg,(Double) (-10000* 0.15), SEKn100.valorUniversal(), 0.0005);
 	}
 
 	@Test
