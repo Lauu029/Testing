@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+//import static org.hamcrest.Matchers.*;
+//import static org.hamcrest.CoreMatchers.is;
+//import static org.hamcrest.MatcherAssert.assertThat;
 
 import Money.Divisa;
 
@@ -61,12 +64,28 @@ public class DivisaTestTemplate {
 	
 	@Test
 	public void testGlobalValue() {
-		SEK.valorUniversal(0);
+		int cant = 2;
+		String msg = "Wrong global value";
+		
+		//assertThat(cant * SEK.getRate(), closeTo(SEK.valorUniversal(cant), 0.0005));
+		assertEquals(msg, cant * SEK.getRate(), SEK.valorUniversal(cant), 0.0005);
+		assertEquals(msg, cant * DKK.getRate(), DKK.valorUniversal(cant), 0.0005);
+		assertEquals(msg, cant * EUR.getRate(), EUR.valorUniversal(cant), 0.0005);
 	}
 	
 	@Test
 	public void testValueEnEstaDivisa() {
-		fail("No implementado");
+		int cant = 2;
+		String msg = "Wrong value in this currency";
+		
+		assertEquals(msg, DKK.valorUniversal(cant) / SEK.getRate(), SEK.valorEnEstaDivisa(cant, DKK), 0.0005);
+		assertEquals(msg, EUR.valorUniversal(cant) / SEK.getRate(), SEK.valorEnEstaDivisa(cant, EUR), 0.0005);
+		
+		assertEquals(msg, SEK.valorUniversal(cant) / DKK.getRate(), DKK.valorEnEstaDivisa(cant, SEK), 0.0005);
+		assertEquals(msg, EUR.valorUniversal(cant) / DKK.getRate(), DKK.valorEnEstaDivisa(cant, EUR), 0.0005);
+		
+		assertEquals(msg, DKK.valorUniversal(cant) / EUR.getRate(), EUR.valorEnEstaDivisa(cant, DKK), 0.0005);
+		assertEquals(msg, SEK.valorUniversal(cant) / EUR.getRate(), EUR.valorEnEstaDivisa(cant, SEK), 0.0005);
 	}
 
 }
