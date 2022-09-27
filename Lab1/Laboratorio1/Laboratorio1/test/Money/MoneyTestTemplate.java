@@ -56,13 +56,13 @@ public class MoneyTestTemplate {
 		String msgSEK = "Should be N SEK in string";
 		String msgEUR = "Should be N EUR in string";
 		
-		assertEquals(msgSEK,"100 SEK", SEK100.toString());
-		assertEquals(msgEUR,"10 EUR", EUR10.toString());
-		assertEquals(msgSEK,"200 SEK", SEK200.toString());
-		assertEquals(msgEUR,"20 EUR", EUR20.toString());
-		assertEquals(msgSEK,"0 SEK", SEK0.toString());
-		assertEquals(msgEUR,"0 EUR", EUR0.toString());
-		assertEquals(msgSEK,"100 SEK", SEKn100.toString());
+		assertEquals(msgSEK,"100.0 SEK", SEK100.toString());
+		assertEquals(msgEUR,"10.0 EUR", EUR10.toString());
+		assertEquals(msgSEK,"200.0 SEK", SEK200.toString());
+		assertEquals(msgEUR,"20.0 EUR", EUR20.toString());
+		assertEquals(msgSEK,"0.0 SEK", SEK0.toString());
+		assertEquals(msgEUR,"0.0 EUR", EUR0.toString());
+		assertEquals(msgSEK,"-100.0 SEK", SEKn100.toString());
 	}
 
 	@Test
@@ -95,23 +95,23 @@ public class MoneyTestTemplate {
 	@Test
 	public void testAdd() {
 		String msg="The Addiction is wrong";
-		assertEquals(msg, 3000, SEK100.add(EUR10));
-		assertEquals(msg, 4500, SEK200.add(SEK100));
-		assertEquals(msg, 4500, EUR10.add(SEK200));
-		assertEquals(msg, 3000, EUR20.add(SEK0));
-		assertEquals(msg, 0, EUR0.add(SEK0));
-		assertEquals(msg, -1500, EUR0.add(SEKn100));
+		assertEquals(msg, 3000, SEK100.getDivisa().valorUniversal((SEK100.add(EUR10)).getCantidad()));
+		assertEquals(msg, 4500, SEK200.getDivisa().valorUniversal((SEK200.add(SEK100)).getCantidad()));
+		assertEquals(msg, 4500, EUR10.getDivisa().valorUniversal((EUR10.add(SEK200)).getCantidad()));
+		assertEquals(msg, 3000, EUR20.getDivisa().valorUniversal((EUR20.add(SEK0)).getCantidad()));
+		assertEquals(msg, 0, EUR0.getDivisa().valorUniversal((EUR0.add(SEK0)).getCantidad()));
+		assertEquals(msg, -1500, EUR0.getDivisa().valorUniversal((EUR0.add(SEKn100)).getCantidad()));
 	}
 
 	@Test
 	public void testSub() {
 		String msg="The Substaction is wrong";
-		assertEquals(msg, 0, SEK100.sub(EUR10));
-		assertEquals(msg, 1500, SEK200.sub(SEK100));
-		assertEquals(msg, -1500, EUR10.sub(SEK200));
-		assertEquals(msg, 3000, EUR20.sub(SEK0));
-		assertEquals(msg, 0, EUR0.sub(SEK0));
-		assertEquals(msg, 1500, EUR0.sub(SEKn100));
+		assertEquals(msg, 0, SEK100.getDivisa().valorUniversal((SEK100.sub(EUR10)).getCantidad()));
+		assertEquals(msg, 1500, SEK200.getDivisa().valorUniversal((SEK200.sub(SEK100)).getCantidad()));
+		assertEquals(msg, -1500, EUR10.getDivisa().valorUniversal((EUR10.sub(SEK200)).getCantidad()));
+		assertEquals(msg, 3000, EUR20.getDivisa().valorUniversal((EUR20.sub(SEK0)).getCantidad()));
+		assertEquals(msg, 0, EUR0.getDivisa().valorUniversal((EUR0.sub(SEK0)).getCantidad()));
+		assertEquals(msg, 1500, EUR0.getDivisa().valorUniversal((EUR0.sub(SEKn100)).getCantidad()));
 	}
 
 	@Test
@@ -132,13 +132,13 @@ public class MoneyTestTemplate {
 		String msgP="Should be Positive";
 		String msgC="Should be Zero";
 		
-		assertEquals(msgN, -10000, SEK100.negate());
-		assertEquals(msgN,-1000, EUR10.negate());
-		assertEquals(msgN,-20000, SEK200.negate());
-		assertEquals(msgN, -2000, EUR20.negate());
-		assertEquals(msgC, 0, SEK0.negate());
-		assertEquals(msgC, 0, EUR0.negate());
-		assertEquals(msgP,10000, SEKn100.negate());
+		assertEquals(msgN, -10000, SEK100.negate().getCantidad());
+		assertEquals(msgN,-1000, EUR10.negate().getCantidad());
+		assertEquals(msgN,-20000, SEK200.negate().getCantidad());
+		assertEquals(msgN, -2000, EUR20.negate().getCantidad());
+		assertEquals(msgC, 0, SEK0.negate().getCantidad());
+		assertEquals(msgC, 0, EUR0.negate().getCantidad());
+		assertEquals(msgP,10000, SEKn100.negate().getCantidad());
 	}
 
 	@Test
@@ -152,6 +152,6 @@ public class MoneyTestTemplate {
 		assertTrue(msgEq, EUR0.compareTo(SEK0)==0);
 		assertTrue(msgLess, EUR10.compareTo(SEK200)<0);	
 		assertTrue(msgLess, SEKn100.compareTo(SEK100)<0);
-		assertTrue(msgGreat, EUR10.compareTo(SEK100)>0);
+		assertTrue(msgGreat, EUR10.compareTo(SEK100)==0);
 	}
 }
