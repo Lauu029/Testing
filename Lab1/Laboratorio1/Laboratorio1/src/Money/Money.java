@@ -49,7 +49,7 @@ public class Money implements Comparable {
 	 * @return Valor universal de la cantidad
 	 */
 	public int valorUniversal() {
-		return divisa.valorUniversal(this.cantidad);
+		return divisa.valorUniversal(cantidad);
 	}
 	
 	/**
@@ -58,7 +58,7 @@ public class Money implements Comparable {
 	 * @return Boolean indicando equivalencia
 	 */
 	public Boolean equals(Money otra) {
-		return otra.valorUniversal()==valorUniversal();
+		return otra.valorUniversal() == valorUniversal();
 	}
 	
 	/**

@@ -83,13 +83,13 @@ public class MoneyTestTemplate {
 		String msgF = "Should not have equal money";
 		String msgT = "Should have equal money";
 		
-		assertNotEquals(msgF, SEK100.equals(SEK200));
-		assertNotEquals(msgF, SEK200.equals(SEK100));
-		assertNotEquals(msgF, EUR10.equals(EUR20));
-		assertNotEquals(msgF, SEKn100.equals(SEK100));
+		assertFalse(msgF, SEK100.equals(SEK200));
+		assertFalse(msgF, SEK200.equals(SEK100));
+		assertFalse(msgF, EUR10.equals(EUR20));
+		assertFalse(msgF, SEKn100.equals(SEK100));
 		
-		assertEquals(msgT, EUR0.equals(SEK0));
-		assertEquals(msgT, SEK100.equals(SEK100));
+		assertTrue(msgT, SEK100.equals(SEK100));
+		assertTrue(msgT, EUR0.equals(SEK0));
 	}
 
 	@Test
@@ -136,8 +136,8 @@ public class MoneyTestTemplate {
 		assertEquals(msgN,-1000, EUR10.negate());
 		assertEquals(msgN,-20000, SEK200.negate());
 		assertEquals(msgN, -2000, EUR20.negate());
-		assertEquals(msgC,0, SEK0.negate());
-		assertEquals(msgC,0, EUR0.negate());
+		assertEquals(msgC, 0, SEK0.negate());
+		assertEquals(msgC, 0, EUR0.negate());
 		assertEquals(msgP,10000, SEKn100.negate());
 	}
 
