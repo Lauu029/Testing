@@ -21,7 +21,7 @@ public class Cuenta {
 	public Money getSaldo() {
 		return balance;
 	}
-	
+
 	/**
 	 * Pagos periodicos
 	 * @return Pagos asociados a cuenta
@@ -37,7 +37,7 @@ public class Cuenta {
 	 * @param tocuenta cuenta receptora del pago
 	 */
 	public void pagoPeriodico(String id, Money cantidad, Cuenta tocuenta) throws PagoExistenteException{
-		if (!pagoPeriodicoExiste(id))  {
+		if (pagoPeriodicoExiste(id))  {
 			throw new PagoExistenteException("Pago ya registrado");
 		}
 		PagoPeriodico tp = new PagoPeriodico(cantidad, this, tocuenta);
@@ -49,7 +49,7 @@ public class Cuenta {
 	 * @param id identificador del pago
 	 */
 	public void cancelarPagoPeriodico(String id) throws PagoNoExistenteException {
-		if (pagoPeriodicoExiste(id))  {
+		if (!pagoPeriodicoExiste(id))  {
 			throw new PagoNoExistenteException("Pago no registrado");
 		}
 		pagosperiodicos.remove(id);
