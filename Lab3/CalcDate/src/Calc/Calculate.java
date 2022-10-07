@@ -2,8 +2,6 @@ package Calc;
 import java.io.*;
 
 public class Calculate {
-	
-	
 
 	   public int cal (int month1, int day1, int month2,
 	                          int day2, int year)
@@ -39,7 +37,7 @@ public class Calculate {
 
 	         // add the days in the intervening months
 	         for (int i = month1 + 1; i <= month2-1; i++)
-	            numDays = daysIn[i] + numDays;
+	            numDays += daysIn[i];
 	      }
 	      return (numDays);
 	   }
