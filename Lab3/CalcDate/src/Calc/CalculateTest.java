@@ -52,4 +52,4 @@ public class CalculateTest {
 		assertEquals("test 8", 60, cl.cal(1,3,3,4,1000));		
 	}
 	
-}<>
+}
