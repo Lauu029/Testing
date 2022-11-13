@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class EmisorFacturaTest {
 	private EmisorFactura emisorFactura;
-	private Cliente cliente = mock(Cliente.class);
+	private Cliente cliente;
 	private Factura factura = mock(Factura.class);
 	private EmailService emailService = mock(EmailService.class);
 	private PrinterService printerService = mock(PrinterService.class);
@@ -16,22 +16,26 @@ public class EmisorFacturaTest {
 	@Before
 	public void setUp() throws Exception {
 		emisorFactura=new EmisorFactura(printerService,emailService);
+		
 	}
 	
 	@Test
-	public void testEmail() {	
-		when(cliente.prefiereEmails()).thenReturn(true);
-		when(cliente.getEmail()).thenReturn("facturaEmail");
+	public void testEmail() {
+		cliente = new Cliente("facturaEmail", true);
+		
 		emisorFactura.emitirFactura(factura, cliente);
+		
 		verify(emailService).sendFactura(factura,"facturaEmail");
-		verify(printerService,never()).printFactura(factura);
+		verify(printerService, never()).printFactura(factura);
 	}
 	
 	@Test
 	public void testPapel() {	
-		when(cliente.prefiereEmails()).thenReturn(false);
+		cliente = new Cliente("facturaEmail", false);
+		
 		emisorFactura.emitirFactura(factura, cliente);
+		
 		verify(printerService).printFactura(factura);
-		verify(emailService,never()).sendFactura(factura,anyString());
+		verify(emailService, never()).sendFactura(factura, anyString());
 	}
 }
