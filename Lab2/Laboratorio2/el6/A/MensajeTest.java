@@ -25,5 +25,5 @@ public class MensajeTest {
 		mensaje.sendMensaje(cliente, template);
 		
 		verify(mailServer).send("Danlles", "Danlles friki");;
-	}	
+	}
 }
