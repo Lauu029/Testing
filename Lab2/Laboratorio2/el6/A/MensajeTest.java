@@ -18,12 +18,12 @@ public class MensajeTest {
 	}
 	
 	@Test
-	public void testMensaje() {
+	public void testMensaje() {	
+		when(cliente.getEmail()).thenReturn("Danlles");
+		when(templateE.preparaMensaje(template, cliente)).thenReturn("Danlles friki");
+		
 		mensaje.sendMensaje(cliente, template);
 		
-		when(cliente.getEmail()).thenReturn("DAnlles friki");
-		
-		verify(mailServer).send(cliente.getEmail(), "DAnlles friki");;
-	}
-		
+		verify(mailServer).send("Danlles", "Danlles friki");;
+	}	
 }
