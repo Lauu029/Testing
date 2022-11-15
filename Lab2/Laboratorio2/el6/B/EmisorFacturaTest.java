@@ -36,6 +36,6 @@ public class EmisorFacturaTest {
 		emisorFactura.emitirFactura(factura, cliente);
 		
 		verify(printerService).printFactura(factura);
-		verify(emailService, never()).sendFactura(factura, anyString());
+		verify(emailService, never()).sendFactura(any(), anyString());
 	}
 }
