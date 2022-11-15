@@ -19,11 +19,11 @@ public class MensajeTest {
 	
 	@Test
 	public void testMensaje() {	
-		when(cliente.getEmail()).thenReturn("Danlles");
-		when(templateE.preparaMensaje(template, cliente)).thenReturn("Danlles friki");
+		when(cliente.getEmail()).thenReturn("example@gmail.com");
+		when(templateE.preparaMensaje(template, cliente)).thenReturn("Correo ejemplo");
 		
 		mensaje.sendMensaje(cliente, template);
 		
-		verify(mailServer).send("Danlles", "Danlles friki");;
+		verify(mailServer).send("example@gmail.com", "Correo ejemplo");;
 	}
 }
