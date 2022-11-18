@@ -13,10 +13,11 @@ public class ejemploTest {
 	}
 	
 	@Test
-	public void testThrowEsception() {
+	public void testThrowEsception() throws NullPointerException {
+//		NullPointerException expected;
 //		int[] array1= null;
 //		int[] array2= {1,0,2};
-//		assertThrows("testA1B2C2", NullPointerException.class, () -> mul.multiplica(array1,array2));
+//		expected = assertThrows("testA1B2C2", NullPointerException.class, () -> mul.multiplica(array1,array2));
 	}
 	@Test
 	public void testEquals() {
