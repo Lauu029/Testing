@@ -36,7 +36,7 @@ public class Dia {
 	    	int slot = 0, sigSlot;
 	    	while (slot < MAX_CITAS_POR_DIA){ 
 	    		if(citas[slot] == null) {
-	            	hora = slot;
+	    			hora = PRIMERA_CITA + slot;
 	                if(duracion == 1) {
 	                	
 	                      return hora;
