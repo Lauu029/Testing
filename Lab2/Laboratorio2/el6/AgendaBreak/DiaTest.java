@@ -13,7 +13,7 @@ public class DiaTest {
 	}
 	
 	@Test
-	public void testEquals() throws DatoException {
+	public void testBuscaSlot() throws DatoException {
 		d = new Dia(1);
 	
 		//Camino 3
