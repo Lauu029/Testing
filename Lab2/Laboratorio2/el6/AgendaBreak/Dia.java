@@ -15,7 +15,7 @@ public class Dia {
 	     */
 	    public Dia(int diaNumero) throws DatoException{
 	    
-	    	if (diaNumero < 0 || diaNumero > 365){
+	    	if (diaNumero < 1 || diaNumero > 365){
 	    		
 	    		throw new DatoException("El dia debe tomar valor entre 1 y 365");
 	    	}

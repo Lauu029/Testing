@@ -50,18 +50,46 @@ public class DiaTest {
 		//p1
 		
 		d = new Dia(1);
-		Cita c1 = new Cita("a",2);
+		Cita c1 = new Cita("a", 2);
 		
-		assertTrue("p1 -> a = T, b = T", d.asignarCita(9, c1)); //T T
+		assertTrue("p1 -> a = T, b = T", d.asignarCita(9, c1)); 
 		
+		Cita c2 = new Cita("b", 10);
 		
-		assertEquals("Should be -1", -1, d.buscaSlot(10)); //F T
-
+		assertFalse("p1 -> a = T, b = F", d.asignarCita(11, c2));
+		
+		Cita c3 = new Cita("c", 2);
+		
+		assertFalse("p1 -> a = F, b = T", d.asignarCita(6, c3)); 
+		
 		//p2
-		//p3
-		//p4
-		//p5
 		
+		Cita c4 = new Cita("c", 1);
+		d.asignarCita(11, c4);
+		assertEquals("p2 -> c = T", c4, d.getCita(11)); 
+		
+		Cita c5 = new Cita("c", 0);
+		d.asignarCita(12, c5);
+		
+		assertNotEquals("p2 -> c = F", c5, d.getCita(12)); 
+		
+	}
+	
+	@Test
+	//Test CACC
+	public void testMuestraCitaCACC() throws DatoException {
+		//p1
+		d = new Dia(1);
+		Cita c1 = new Cita("a", 2);
+		d.asignarCita(9, c1);
+		
+		assertEquals("p1 -> a = T && p2 -> b = T", "9:00 a", d.muestraCita(9)); 
+		
+		assertEquals("p1 -> a = F", "Hora no valida", d.muestraCita(6)); 
+		
+		//p2
+		
+		assertEquals("p1 -> b = F", "No existe", d.muestraCita(11)); 
 	}
 	
 	@Test
