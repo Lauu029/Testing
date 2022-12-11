@@ -13,6 +13,7 @@ public class DiaTest {
 	}
 	
 	@Test
+	//Test Prime path Coverage
 	public void testBuscaSlot() throws DatoException {
 		d = new Dia(1);
 	
