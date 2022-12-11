@@ -35,46 +35,21 @@ public class DiaTest {
 		assertEquals("p1 -> a = F", -1, d.buscaSlot(10)); //F
 
 		//p2
-		Cita c1 = new Cita("a", 9);
-		d.asignarCita(9, c1);
-		assertEquals("p2 -> b = F", -1, d.buscaSlot(2));
-		
-		d = new Dia(1);
-		assertEquals("p2 -> b = T", 9, d.buscaSlot(1));
 		
 		//p3
-		assertEquals("p3 -> c = T", 9, d.buscaSlot(1));
-		assertEquals("p3 -> c = F", 9, d.buscaSlot(2));
-
+		
 		//p4
-		assertEquals("p4 -> d = T, e = T, f = T", 9, d.buscaSlot(2)); // T
-		
-		
-		d = new Dia(1);
-		c1 = new Cita("a", 8);
-		d.asignarCita(9, c1);
-		assertEquals("p4 -> d = T, e = T, f = F", -1, d.buscaSlot(2)); //T
-		assertEquals("p4 -> d = T, e = F, f = T", 17, d.buscaSlot(1)); //T
-		assertEquals("p4 -> d = T, e = F, f = F", -1, d.buscaSlot(10));
-
-		d = new Dia(1);
-		assertEquals("p4 -> d = F, e = T, f = T", -1, d.buscaSlot(0));
-		c1 = new Cita("a", 8);
-		d.asignarCita(9, c1);
-		assertEquals("p4 -> d = F, e = T, f = F", -1, d.buscaSlot(0));
-		//assertEquals("p4 -> d = F, e = F, f = T", 9, d.buscaSlot(2)); //Imposible
-		//assertEquals("p4 -> d = F, e = F, f = F", 9, d.buscaSlot(2)); //Imposible
-
 		
 		//p5
-		d = new Dia(1);
-		assertEquals("p5 -> g = T", 9, d.buscaSlot(2));
-		c1 = new Cita("b", 1);
-		d.asignarCita(9, c1);
-		assertEquals("p5 -> g = F", 10, d.buscaSlot(2));
-
+		
 	}
-	
+	@Test
+	//Test BCC
+	public void getCita() throws DatoException {
+		d = new Dia(1);
+		assertEquals("p1 -> a = T", 8, d.getCita(8)); //T
+		assertEquals("p1 -> a = F", 9, d.getCita(9)); //F
+	}
 	@Test
 	//Test CACC
 	public void testAsignarCitaCACC() throws DatoException {
