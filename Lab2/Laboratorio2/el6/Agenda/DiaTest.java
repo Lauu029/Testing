@@ -59,13 +59,15 @@ public class DiaTest {
 
 		d = new Dia(1);
 		assertEquals("p4 -> d = F, e = T, f = T", -1, d.buscaSlot(0));
-		
-		assertEquals("p4 -> d = F, e = T, f = F", 9, d.buscaSlot(0));
-		assertEquals("p4 -> d = F, e = F, f = T", 9, d.buscaSlot(2));
-		assertEquals("p4 -> d = F, e = F, f = F", 9, d.buscaSlot(2));
+		c1 = new Cita("a", 8);
+		d.asignarCita(9, c1);
+		assertEquals("p4 -> d = F, e = T, f = F", -1, d.buscaSlot(0));
+		//assertEquals("p4 -> d = F, e = F, f = T", 9, d.buscaSlot(2)); //Imposible
+		//assertEquals("p4 -> d = F, e = F, f = F", 9, d.buscaSlot(2)); //Imposible
 
 		
 		//p5
+		d = new Dia(1);
 		assertEquals("p5 -> g = T", 9, d.buscaSlot(2));
 		c1 = new Cita("b", 1);
 		d.asignarCita(9, c1);
