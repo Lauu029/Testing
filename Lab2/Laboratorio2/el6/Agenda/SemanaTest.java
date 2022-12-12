@@ -6,8 +6,28 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class SemanaTest {
+	Semana s;
+
 	@Before
 	public void setUp() throws Exception {
+
+	}
+	
+	@Test
+	public void testSemana() throws DatoException{
+		//p1
+		assertThrows(DatoException.class, () -> s = new Semana(0)); //T F
+		assertThrows(DatoException.class, () -> s = new Semana(54)); //F T
+		
+		s = new Semana(2);
+		assertEquals("s1 -> a = F, b = F", 2, s.getNumeroSemana());
+		
+		//p2
+		assertEquals("s2 -> c = T", 2, s.getNumeroSemana());
+		s = new Semana(1);
+		assertEquals("s2 -> c = F", 1, s.getNumeroSemana());
+		
+		//p3
 
 	}
 	
