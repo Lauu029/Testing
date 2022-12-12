@@ -115,8 +115,8 @@ public class Dia {
 	    	
 	    	if (validaHora(hora)) { 
 	    	    int horaIni = hora - PRIMERA_CITA; 
-	            if(citas[diaNumero] != null) {
-	                return hora + ":00 " + citas[hora].getDescripcion();
+	            if(citas[horaIni] != null) {
+	                return hora + ":00 " + citas[horaIni].getDescripcion();
 	            }
 	    	
 	            else {
@@ -124,7 +124,7 @@ public class Dia {
 	            }
 	        }
 	    	else {
-                return "Hora valida";
+                return "Hora no valida";
             }
 	    }
 

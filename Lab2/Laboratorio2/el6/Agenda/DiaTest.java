@@ -99,6 +99,36 @@ public class DiaTest {
 	}
 	
 	@Test
+	//Test CACC
+	public void testHuecoLibreCACC() throws DatoException {
+		//p1
+		d = new Dia(1);
+		//Cita c1 = new Cita("a", 2);
+		
+		assertFalse("p1 -> a = F", d.huecoLibre(6, 3)); 
+		
+		Cita c1 = new Cita("a", 2);
+		d.asignarCita(9, c1);
+		
+		assertFalse("p1 -> a = T && p2 -> b = F", d.huecoLibre(9, 1)); 
+
+		//p2
+		
+		assertTrue("p2 -> b = T", d.huecoLibre(11, 1)); 
+		
+		//p3
+		
+		
+		
+		//p4
+		
+		//p5
+		
+		//assertTrue("p5 -> f = T", d.huecoLibre(9, 1)); 
+		
+	}
+	
+	@Test
 	//Test PPC
 	public void testBuscaSlotPPC() throws DatoException {
 		d = new Dia(1);

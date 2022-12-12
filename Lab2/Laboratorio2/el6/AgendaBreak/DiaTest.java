@@ -109,7 +109,7 @@ public class DiaTest {
 	//Test CACC
 	public void testMuestraCitaCACC() throws DatoException {
 		//p1
-		d = new Dia(1);
+		d = new Dia(5);
 		Cita c1 = new Cita("a", 2);
 		d.asignarCita(9, c1);
 		
