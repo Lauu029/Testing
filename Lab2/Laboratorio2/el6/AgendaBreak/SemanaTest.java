@@ -39,6 +39,25 @@ public class SemanaTest {
 	}
 	
 	@Test
+	public void testPrimerHueco() throws DatoException {
+		//p1
+		s = new Semana(3);
+		assertEquals("s4 -> a = F", "No hay disponibilidad", s.primerHueco(10));
+		assertEquals("s4 -> a = T", "Lunes 9:00", s.primerHueco(2));
+
+		//p2
+		s = new Semana(53);
+		assertEquals("s4 -> b = F", "No hay disponibilidad", s.primerHueco(10));
+		assertEquals("s4 -> b = T", "Lunes 9:00", s.primerHueco(1));
+
+		//p3
+		s = new Semana(3);
+		assertEquals("s4 -> c = F", "No hay disponibilidad", s.primerHueco(10));
+		assertEquals("s4 -> c = T", "Lunes 9:00", s.primerHueco(2));
+	}
+	
+	
+	@Test
 	public void testDiaSemana() throws DatoException {	
 		s = new Semana(1);
 		
