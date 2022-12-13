@@ -123,6 +123,43 @@ public class DiaTest {
 	}
 	
 	@Test
+	//Test CACC
+	public void testHuecoLibreCACC() throws DatoException {
+		//p1
+		d = new Dia(1);
+		//Cita c1 = new Cita("a", 2);
+		
+		assertFalse("p1 -> a = F", d.huecoLibre(6, 3)); 
+		
+		Cita c1 = new Cita("a", 2);
+		d.asignarCita(9, c1);
+		
+		assertFalse("p1 -> a = T && p2 -> b = F", d.huecoLibre(9, 1)); 
+
+		//p2
+		
+		assertTrue("p2 -> b = T && p3 -> c = F, d = T && p5 -> f = T", d.huecoLibre(11, 1)); 
+		
+		//p3
+		
+		assertTrue("p3 -> c = T, d = F", d.huecoLibre(16, 2));
+		
+		assertTrue("p3 -> c = T, d = T && p4 -> e = T", d.huecoLibre(12, 2));
+		
+		//p4
+		
+		Cita c2 = new Cita("12", 1);
+		d.asignarCita(12, c2);
+		
+		assertFalse("p4 -> e = F",d.huecoLibre(11, 2));
+		
+		//p5
+		
+		assertFalse("p5 -> f = F", d.huecoLibre(16, 3)); 
+		
+	}
+	
+	@Test
 	//Test Prime path Coverage
 	public void testBuscaSlot() throws DatoException {
 		d = new Dia(1);

@@ -4,7 +4,7 @@ public class Dia {
 
 	    public static final int PRIMERA_CITA = 9;
 	    public static final int ULTIMA_CITA = 17;
-	    public static final int MAX_CITAS_POR_DIA =	ULTIMA_CITA - PRIMERA_CITA ;
+	    public static final int MAX_CITAS_POR_DIA =	ULTIMA_CITA - PRIMERA_CITA +1;
 	    
 
 	    private int diaNumero;
@@ -157,16 +157,14 @@ public class Dia {
 		    	int horaIni = hora - PRIMERA_CITA;
 	            if(citas[horaIni] == null) {
 	            	duracion--;
-		            for(int slot=horaIni; duracion > 0 && slot < MAX_CITAS_POR_DIA ; slot++) {
+		            for(int slot=horaIni+1; duracion > 0 && slot < MAX_CITAS_POR_DIA ; slot++) {
 		          	  if (citas[slot] == null) {duracion--;}
-	
-		          	}
-	   
-		            return true;
-	            }
-	            else {return false;}
+		          	  else {return false;}
+		            }
+		            if (duracion==0) {return true;}
+	            }        
 		    }
-	    	else {return false;}
+	    	return false;
 	    
 	    }   
 }
