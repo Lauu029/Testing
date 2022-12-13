@@ -23,11 +23,20 @@ public class SemanaTest {
 		assertEquals("s1 -> a = F, b = F", 2, s.getNumeroSemana());
 		
 		//p2
-		assertEquals("s2 -> c = T", 2, s.getNumeroSemana());
+		assertEquals("s1 -> c = T", 2, s.getNumeroSemana());
 		s = new Semana(1);
-		assertEquals("s2 -> c = F", 1, s.getNumeroSemana());
+		assertEquals("s1 -> c = F", 1, s.getNumeroSemana());
 		
 		//p3
+		s = new Semana(24);
+		assertEquals("s1 -> d = T, e = T", 24, s.getNumeroSemana());
+		s = new Semana(25);
+		assertEquals("s1 -> d = T, e = F", 25, s.getNumeroSemana());
+		s = new Semana(53);
+		assertEquals("s1 -> d = F, e = T", 53, s.getNumeroSemana());
+		s = new Semana(1);
+		s.getDia(5);
+		assertEquals("s1 -> d = F, e = F", 1, s.getNumeroSemana());
 
 	}
 	
